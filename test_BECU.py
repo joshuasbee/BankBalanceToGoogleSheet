@@ -1,10 +1,10 @@
 from playwright.sync_api import sync_playwright
 import data
 from sheets import update_google_sheet
-
-def login_with_playwright():
+#make this a class...
+def get_balance():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # Set headless to False to see the browser
+        browser = p.chromium.launch(headless=True)  # Set headless to False to see the browser
         page = browser.new_page()
  
         # Replace 'your_website_url' with the URL of the website you want to login to
@@ -28,23 +28,21 @@ def login_with_playwright():
         page.wait_for_selector('table.dataTableXtended')
 
         # Find the element containing the desired value
-        value_element = page.query_selector('table.dataTableXtended tbody tr.footer td:nth-child(3)')
-
+        checking_element = page.query_selector('table.dataTableXtended tbody tr.footer td:nth-child(3)')        
         # Extract the text content of the element
-        if value_element:
-            value = value_element.inner_text()
-            print("Extracted value from the table:", value)
+        if checking_element:
+            checking = checking_element.inner_text()
+            print(f'{checking=}')
         else:
-            print("Value not found")
+            print("Checking not found")
+            checking = -999
 
 
         # Close the browser
         browser.close()
-        return value
+        return checking
 
 # Call the function to execute the login
-balance = login_with_playwright()
+checking = get_balance()
 
-# print(f'{balance[1:]}')
-# balance = '$336.49'
-update_google_sheet(balance, 'A1')
+# update_google_sheet(checking, 'A2')

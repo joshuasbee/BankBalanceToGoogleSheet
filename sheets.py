@@ -34,7 +34,7 @@ def update_values(spreadsheet_id, range_name, value_input_option, _values):
 def update_google_sheet(value_to_update, cell: str):
     # Specify the spreadsheet ID and range
     spreadsheet_id = "1veu8ltplzC5vc_51Ug51twVumMSwEtbsiVTYyeaVfN4"
-    range_name = f"Sheet8!{cell}"
+    range_name = f"Accounts!{cell}"
 
     # Update the value in the spreadsheet
     update_values(
@@ -47,7 +47,7 @@ def update_google_sheet(value_to_update, cell: str):
 if __name__ == "__main__":
     # Specify the spreadsheet ID and range
     spreadsheet_id = "1veu8ltplzC5vc_51Ug51twVumMSwEtbsiVTYyeaVfN4"
-    range_name = "Sheet8!A1"
+    range_name = "Accounts!A2"
 
     # Specify the value to be updated
     value_to_update = [['a']]
