@@ -1,7 +1,7 @@
 from playwright.sync_api import sync_playwright
 import data
 import threading
-# from sheets import update_google_sheet
+
 class BECU (threading.Thread):
     def __init__(self):
         super().__init__()
@@ -39,14 +39,8 @@ class BECU (threading.Thread):
                 print(f'{checking=}')
             else:
                 print("Checking not found")
-                checking = -999
+                checking = -999 # Error getting value, write bank balance as -999
 
             # Close the browser
             browser.close()
             self.result = checking
-
-# Call the function to execute the login
-# checking = BECU()
-# checking.start()
-# checking.join()
-# update_google_sheet(checking.result, 'A2')
