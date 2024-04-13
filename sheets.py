@@ -1,6 +1,7 @@
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from data import spreadsheet
 
 def update_values(spreadsheet_id, range_name, value_input_option, _values):
     """
@@ -33,7 +34,7 @@ def update_values(spreadsheet_id, range_name, value_input_option, _values):
 
 def update_google_sheet(value_to_update, cell: str):
     # Specify the spreadsheet ID and range
-    spreadsheet_id = "1veu8ltplzC5vc_51Ug51twVumMSwEtbsiVTYyeaVfN4"
+    spreadsheet_id = spreadsheet
     range_name = f"Accounts!{cell}"
 
     # Update the value in the spreadsheet
@@ -46,7 +47,7 @@ def update_google_sheet(value_to_update, cell: str):
 
 if __name__ == "__main__":
     # Specify the spreadsheet ID and range
-    spreadsheet_id = "1veu8ltplzC5vc_51Ug51twVumMSwEtbsiVTYyeaVfN4"
+    spreadsheet_id = spreadsheet
     range_name = "Accounts!A2"
 
     # Specify the value to be updated
